@@ -47,6 +47,18 @@
                 <input id="password-confirm" type="password" class="auth-input" name="password_confirmation" placeholder="请再次输入密码" required autocomplete="new-password">
             </div>
 
+            <div class="auth-field">
+                <label for="captcha">验证码</label>
+                <div class="auth-captcha-row">
+                    <input id="captcha" type="text" class="auth-input @error('captcha') is-invalid @enderror" name="captcha" placeholder="请输入图片中的验证码" required autocomplete="off" @error('captcha') aria-invalid="true" aria-describedby="captcha-error" @enderror>
+                    <img class="auth-captcha-image" src="{{ captcha_src('flat') }}" onclick="this.src='{{ captcha_src('flat') }}?'+Date.now()" title="点击图片更换验证码" alt="注册验证码，点击图片可更换">
+                </div>
+                @error('captcha')
+                    <p id="captcha-error" class="auth-error" role="alert">{{ $message }}</p>
+                @enderror
+                <p class="auth-help">看不清？点击验证码图片换一张。</p>
+            </div>
+
             <button type="submit" class="auth-submit">创建账号</button>
         </form>
 
