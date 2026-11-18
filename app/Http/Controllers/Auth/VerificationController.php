@@ -34,7 +34,8 @@ class VerificationController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    {    
+        // 设定了所有的控制器动作都需要登录后才能访问。
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
