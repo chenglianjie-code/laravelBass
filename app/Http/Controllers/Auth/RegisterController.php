@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use App\Providers\RouteServiceProvider; 
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Foundation\Auth\RegistersUsers; // 文件顶部：导入这个 Trait
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -21,7 +21,8 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
+    // Trait（特性） “把一组可复用的方法装进这个类里”。它和继承不同：PHP 一个类只能 extends 一个父类，但可以 use 多个 Trait。
+    // 类里面：把 Trait 中的方法加入这个控制器
     use RegistersUsers;
 
     /**

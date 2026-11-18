@@ -1,25 +1,36 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top">
+<nav class="navbar" aria-label="主导航">
   <div class="container">
-    <!-- Branding Image -->
-    <a class="navbar-brand " href="{{ url('/') }}">
-      LaraBBS
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <a class="navbar-brand" href="{{ url('/') }}">LaraBBS</a>
 
-    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-      <!-- Left Side Of Navbar -->
-      <ul class="navbar-nav">
-
-      </ul>
-
-      <!-- Right Side Of Navbar -->
-      <ul class="navbar-nav navbar-right">
-        <!-- Authentication Links -->
-        <li class="nav-item"><a class="nav-link" href="{{route('login')}}">登录</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{route('register')}}">注册</a></li>
-      </ul>
+    <div class="navbar-collapse" id="navbarSupportedContent">
+      {{-- // @guest 是 Laravel Blade 的身份判断指令，表示“当前访客还没有登录”。 --}}
+      @guest
+        <ul class="navbar-nav navbar-right">
+          <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">登录</a></li>
+          <li class="nav-item"><a class="nav-link nav-register" href="{{ route('register') }}">注册</a></li>
+        </ul>
+      @else
+        <ul class="navbar-nav navbar-right">
+          <li class="nav-item">
+            <details class="nav-user dropdown">
+              <summary class="nav-link dropdown-toggle" id="navbarDropdown">
+                <span class="nav-avatar" aria-hidden="true">{{ mb_substr(Auth::user()->name, 0, 1) }}</span>
+                <span class="nav-user-name">{{ Auth::user()->name }}</span>
+                <span class="nav-user-chevron" aria-hidden="true"></span>
+              </summary>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="">个人中心</a>
+                <a class="dropdown-item" href="">编辑资料</a>
+                <div class="dropdown-divider"></div>
+                <form class="dropdown-logout" action="{{ route('logout') }}" method="POST">
+                  @csrf
+                  <button class="dropdown-item nav-logout" id="logout" type="submit">退出登录</button>
+                </form>
+              </div>
+            </details>
+          </li>
+        </ul>
+      @endguest
     </div>
   </div>
 </nav>
