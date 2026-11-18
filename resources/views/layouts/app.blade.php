@@ -12,16 +12,16 @@
   <title>@yield('title', 'LaraBBS') - Laravel 进阶教程</title>
 
   <!-- Styles -->
-  {{-- <link href="{{ mix('css/app.css') }}" rel="stylesheet"> --}}
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
 
 <body>
-  <div id="app" >
+  <div id="app">
 
     @include('layouts._header')
 
-    <div class="container">
+    <div class="container page-container">
 
       @include('shared._messages')
 
