@@ -259,3 +259,34 @@
   color: #87928e;
   font-size: 12px;
 }
+
+
+.auth-verify-copy {
+  margin: 24px 0;
+  color: #687570;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.auth-verify-copy p {
+  margin: 0 0 10px;
+}
+
+.auth-verify-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.auth-notice {
+  margin: 22px 0;
+  padding: 12px 14px;
+  border: 1px solid #cce9df;
+  border-radius: 9px;
+  color: #247f73;
+  background: #f0f9f5;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.auth-switch {
+  line-height: 1.7;
+}
