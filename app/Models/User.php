@@ -14,6 +14,31 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasApiTokens, HasFactory, Notifiable,MustVerifyEmailTrait;
 
     /**
+     * 获取可在当前站点访问的头像 URL。
+     * 兼容数据库中以前保存的 http://localhost/... 绝对地址。
+     */
+    public function getAvatarUrlAttribute(): ?string
+    {
+        $avatar = $this->attributes['avatar'] ?? null;
+
+        if (!$avatar) {
+            return null;
+        }
+
+        if (preg_match('/^https?:\/\//i', $avatar)) {
+            $path = parse_url($avatar, PHP_URL_PATH);
+
+            if (is_string($path) && str_starts_with($path, '/uploads/')) {
+                $avatar = ltrim($path, '/');
+            } else {
+                return $avatar;
+            }
+        }
+
+        return asset(ltrim($avatar, '/'));
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -23,6 +48,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'introduction',
+        'avatar'
     ];
 
     /**

@@ -14,7 +14,11 @@
           <li class="nav-item">
             <details class="nav-user dropdown">
               <summary class="nav-link dropdown-toggle" id="navbarDropdown">
-                <span class="nav-avatar" aria-hidden="true">{{ mb_substr(Auth::user()->name, 0, 1) }}</span>
+                @if (Auth::user()->avatar_url)
+                  <img class="nav-avatar-image" src="{{ Auth::user()->avatar_url }}" alt="">
+                @else
+                  <span class="nav-avatar" aria-hidden="true">{{ mb_substr(Auth::user()->name, 0, 1) }}</span>
+                @endif
                 <span class="nav-user-name">{{ Auth::user()->name }}</span>
                 <span class="nav-user-chevron" aria-hidden="true"></span>
               </summary>

@@ -26,7 +26,7 @@
         </div>
       </div>
 
-      <form action="{{ route('users.update', $user->id) }}" method="POST" accept-charset="UTF-8">
+      <form action="{{ route('users.update', $user->id) }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
 
@@ -50,6 +50,16 @@
           <textarea class="profile-input profile-textarea" name="introduction" id="introduction-field"
             rows="4" maxlength="80" placeholder="简单介绍一下自己吧（最多 80 个字）">{{ old('introduction', $user->introduction) }}</textarea>
           <p class="edit-profile-hint">最多填写 80 个字符。</p>
+        </div>
+
+        <div class="edit-profile-field">
+          <label for="avatar-field">用户头像 <span class="optional-label">选填</span></label>
+          <input id="avatar-field" type="file" name="avatar" class="profile-input profile-file-input"
+            accept=".jpg,.jpeg,.png,.gif,image/jpeg,image/png,image/gif">
+          <p class="edit-profile-hint">支持 JPG、PNG 或 GIF 图片。</p>
+          @if ($user->avatar_url)
+            <img class="profile-upload-preview" src="{{ $user->avatar_url }}" alt="当前头像">
+          @endif
         </div>
 
         <div class="edit-profile-actions">

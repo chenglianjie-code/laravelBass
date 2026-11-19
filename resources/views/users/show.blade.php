@@ -9,7 +9,11 @@
 @section('content')
   <main class="profile-page">
     <section class="profile-card profile-header" aria-label="用户信息">
-      <div class="profile-avatar" aria-hidden="true">{{ mb_substr($user->name, 0, 1) }}</div>
+      @if ($user->avatar_url)
+        <img class="profile-avatar-image" src="{{ $user->avatar_url }}" alt="{{ $user->name }} 的头像">
+      @else
+        <div class="profile-avatar" aria-hidden="true">{{ mb_substr($user->name, 0, 1) }}</div>
+      @endif
       <div class="profile-heading">
         <p class="profile-eyebrow">LARABBS · 个人主页</p>
         <h1>{{ $user->name }}</h1>

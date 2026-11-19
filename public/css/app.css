@@ -150,6 +150,16 @@ a:hover {
   font-weight: 600;
 }
 
+.nav-avatar-image {
+  display: block;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  border: 2px solid #e2eeea;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .nav-user-name {
   min-width: 0;
   overflow: hidden;
