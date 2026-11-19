@@ -19,8 +19,8 @@
                 <span class="nav-user-chevron" aria-hidden="true"></span>
               </summary>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="">个人中心</a>
-                <a class="dropdown-item" href="">编辑资料</a>
+                <a class="dropdown-item" href="{{route('users.show',Auth::user())}}">个人中心</a>
+                <a class="dropdown-item" href="{{route('users.edit',Auth::id())}}">编辑资料</a>
                 <div class="dropdown-divider"></div>
                 <form class="dropdown-logout" action="{{ route('logout') }}" method="POST">
                   @csrf
