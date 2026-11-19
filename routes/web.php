@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,13 @@ use App\Http\Controllers\Auth\VerificationController;
 */
 
 Route::get('/', [PagesController::class,'root'])->name('root');
+
+
+Route::get('/users/{user}', [UsersController::class,'show'])->name('users.show');
+Route::get('/users/{user}/edit',[ UsersController::class,'edit'])->name('users.edit');
+Route::patch('/users/{user}', [UsersController::class,'update'])->name('users.update');
+
+
 
 // 此处是 Laravel 的用户认证路由，在 vendor/laravel/ui/src/AuthRouteMethods.php 中即可找到定义的地方，以上等同于：
 // Auth::routes();  为了更加直观，我们将在 web.php 中使用以上替换 Auth::routes();。
