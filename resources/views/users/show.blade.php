@@ -5,7 +5,7 @@
 @push('styles')
   <link href="{{ asset('css/pages.css') }}" rel="stylesheet">
 @endpush
-
+{{-- @dump($user->toArray()) --}}
 @section('content')
   <main class="profile-page">
     <section class="profile-card profile-header" aria-label="用户信息">
@@ -23,7 +23,7 @@
           <span class="profile-heading-mark" aria-hidden="true">i</span>
           <h2>个人简介</h2>
         </div>
-        <p class="profile-bio">这个用户还没有填写个人简介。</p>
+        <p class="profile-bio">{{$user->introduction}}</p>
 
         <div class="profile-divider"></div>
 
