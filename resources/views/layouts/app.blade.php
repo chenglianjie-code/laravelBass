@@ -22,7 +22,7 @@
 
     @include('layouts._header')
 
-    <div class="container page-container">
+    <div class="container page-container @yield('page-class')">
 
       @include('shared._messages')
 
