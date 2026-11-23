@@ -28,7 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
         if (preg_match('/^https?:\/\//i', $avatar)) {
             $path = parse_url($avatar, PHP_URL_PATH);
 
-            if (is_string($path) && str_starts_with($path, '/uploads/')) {
+            if (is_string($path) && str_starts_with($path, '/uploads/images/avatars/')) {
                 $avatar = ltrim($path, '/');
             } else {
                 return $avatar;
