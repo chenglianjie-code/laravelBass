@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TopicsController;
+use App\Http\Controllers\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,3 +60,6 @@ Route::post('email/resend', [VerificationController::class, 'resend'])->name('ve
 
 
 Route::resource('topics', TopicsController::class, ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::resource('categories', CategoriesController::class, ['only' => ['show']]);
+

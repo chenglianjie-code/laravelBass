@@ -91,7 +91,7 @@
 
 #app > .topic-list-container,
 #app:has(> .topic-list-container) > .navbar > .container {
-  width: min(1320px, calc(100% - 48px));
+  width: min(1450px, calc(100% - 48px));
 }
 
 #app > .topic-list-container {
@@ -123,7 +123,8 @@
   margin-bottom: 48px;
 }
 
-.topic-list-message {
+.topic-list-message,
+.topic-list-category {
   grid-column: 1 / -1;
   margin: 0;
 }
@@ -170,10 +171,11 @@
 
 .topic-list-item {
   display: grid;
-  grid-template-columns: 66px minmax(0, 1fr) auto;
-  align-items: start;
-  gap: 12px;
-  padding: 20px 0;
+
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 0;
 }
 
 .topic-list-item + .topic-list-item {
@@ -183,8 +185,8 @@
 .topic-list-avatar {
   position: relative;
   display: grid;
-  width: 66px;
-  height: 66px;
+  width: 72px;
+  height: 72px;
   place-items: center;
   padding: 5px;
   border: 1px solid var(--topic-border);

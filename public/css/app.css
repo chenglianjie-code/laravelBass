@@ -72,9 +72,9 @@ a:hover {
 
 .navbar-collapse {
   display: flex;
+  flex: 1 1 auto;
   min-width: 0;
   align-items: center;
-  margin-left: auto;
 }
 
 .navbar-nav {
@@ -238,6 +238,63 @@ a:hover {
 .navbar button:focus-visible {
   outline: 2px solid #56b8aa;
   outline-offset: 3px;
+}
+.navbar-main-nav {
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.navbar .navbar-main-nav .nav-link {
+  color: #495961;
+  font-size: 17px;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.navbar .navbar-main-nav .nav-link:hover {
+  color: #247f73;
+}
+
+.navbar .navbar-main-nav .nav-link[aria-current] {
+  color: #17695e;
+  background: #dbefe9;
+  box-shadow: inset 0 -2px #248575;
+  font-weight: 600;
+}
+
+.navbar-right {
+  flex: 0 0 auto;
+}
+
+@media (min-width: 761px) and (max-width: 900px) {
+  .navbar .navbar-main-nav .nav-link {
+    padding-inline: 10px;
+  }
+}
+
+@media (max-width: 760px) {
+  .navbar > .container {
+    flex-wrap: wrap;
+    row-gap: 4px;
+    padding-block: 8px;
+  }
+
+  .navbar-collapse {
+    display: contents;
+  }
+
+  .navbar .navbar-main-nav {
+    order: 1;
+    flex: 1 0 100%;
+    gap: 2px;
+  }
+
+  .navbar .navbar-main-nav .nav-link {
+    padding: 7px 9px;
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 520px) {
