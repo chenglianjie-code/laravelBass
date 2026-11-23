@@ -14,11 +14,22 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
-	{
-		$topics = Topic::paginate();
-		return view('topics.index', compact('topics'));
-	}
+    public function index(Request $request)
+    {
+        $sort = $request->query('sort') === 'recent' ? 'recent' : 'active';
+        $topics = Topic::with(['user', 'category']);
+
+        if ($sort === 'recent') {
+            $topics->latest('created_at');
+        } else {
+            // 暂用帖子更新时间表示最近活动，等回复模块完成后再接入回复时间。
+            $topics->latest('updated_at');
+        }
+
+        $topics = $topics->orderByDesc('id')->paginate(5)->appends(['sort' => $sort]);
+
+        return view('topics.index', compact('topics', 'sort'));
+    }
 
     public function show(Topic $topic)
     {
