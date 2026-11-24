@@ -59,7 +59,7 @@
                 <a class="dropdown-item" href="{{ route('users.edit', Auth::id()) }}">编辑资料</a>
                 <div class="dropdown-divider"></div>
 
-                <form class="dropdown-logout" action="{{ route('logout') }}" method="POST">
+                <form class="dropdown-logout" action="{{ route('logout') }}" method="POST" onsubmit="return confirm('您确定要退出吗？');">
                   @csrf
                   <button class="dropdown-item nav-logout" id="logout" type="submit">退出登录</button>
                 </form>

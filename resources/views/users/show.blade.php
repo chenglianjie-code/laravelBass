@@ -39,20 +39,27 @@
         </dl>
       </aside>
 
-      <section class="profile-card profile-posts" aria-labelledby="profile-posts-title">
-        <div class="profile-section-heading">
-          <div>
-            <p class="profile-eyebrow">ACTIVITY</p>
-            <h2 id="profile-posts-title">发布的微博</h2>
-          </div>
-          <span class="profile-count">动态</span>
-        </div>
+      <section class="profile-card profile-posts" aria-label="个人动态">
+        @php
+          $showReplies = request()->query('tab') === 'replies';
+        @endphp
 
-        <div class="profile-empty">
-          <span class="profile-empty-icon" aria-hidden="true">✦</span>
-          <h3>还没有发布内容</h3>
-          <p>这个用户发布微博后，会展示在这里。</p>
-        </div>
+        <nav class="profile-activity-tabs" aria-label="个人动态导航">
+          <a
+            href="{{ route('users.show', $user) }}"
+            @if (!$showReplies) aria-current="page" @endif
+          >Ta 的话题</a>
+          <a
+            href="{{ route('users.show', ['user' => $user, 'tab' => 'replies']) }}"
+            @if ($showReplies) aria-current="page" @endif
+          >Ta 的回复</a>
+        </nav>
+
+        @if ($showReplies)
+          <p class="profile-activity-empty">回复功能暂未开放。</p>
+        @else
+          @include('users._topics', ['topics' => $user->topics()->recent()->paginate(5)])
+        @endif
       </section>
     </div>
   </main>
