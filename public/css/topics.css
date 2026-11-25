@@ -585,7 +585,120 @@
 }
 
 .topic-editor-page {
-  max-width: 800px;
+  width: 100%;
+  margin: 0 auto 48px;
+}
+
+.topic-editor-container {
+  width: min(570px, calc(100% - 32px));
+  padding-top: 30px;
+}
+
+.topic-editor-card {
+  padding: 16px;
+  border: 1px solid #e0e3e6;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 1px 5px rgb(30 45 60 / 5%);
+}
+
+.topic-editor-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e3e6e8;
+}
+
+.topic-editor-icon {
+  color: #252b30;
+  font-size: 27px;
+  line-height: 1;
+}
+
+.topic-editor-heading h1 {
+  margin: 0;
+  color: #292e33;
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.topic-editor-form {
+  display: grid;
+  gap: 12px;
+}
+
+.topic-editor-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.topic-editor-input {
+  display: block;
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 10px;
+  border: 1px solid #d5dbe0;
+  border-radius: 4px;
+  color: #39434b;
+  background: #fff;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.topic-editor-input::placeholder {
+  color: #929ba2;
+}
+
+.topic-editor-input:focus {
+  border-color: #79b5ed;
+  outline: 0;
+  box-shadow: 0 0 0 3px rgb(72 143 216 / 15%);
+}
+
+.topic-editor-body {
+  min-height: 122px;
+  resize: vertical;
+}
+
+.topic-editor-save {
+  display: inline-flex;
+  min-height: 36px;
+  justify-self: start;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border: 1px solid #4b98df;
+  border-radius: 4px;
+  color: #fff;
+  background: #579fdf;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.topic-editor-save:hover {
+  border-color: #367fca;
+  background: #438bce;
+}
+
+.topic-editor-save:focus-visible {
+  outline: 3px solid rgb(72 143 216 / 30%);
+  outline-offset: 2px;
+}
+
+.topic-editor-form .validation-errors {
+  margin-bottom: 2px;
 }
 
 .topic-field {
@@ -649,6 +762,14 @@
   .topics-page {
     gap: 16px;
     margin-top: 8px;
+  }
+
+  .topic-editor-container {
+    padding-top: 18px;
+  }
+
+  .topic-editor-card {
+    padding: 14px;
   }
 
   .topics-heading h1,

@@ -8,8 +8,7 @@ class Topic extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['title', 'body', 'user_id', 'category_id', 
-    'reply_count', 'view_count', 'last_reply_user_id', 'order', 'excerpt', 'slug'
+    protected $fillable = ['title', 'body', 'category_id', 'excerpt', 'slug'
    ];
     
     // 一篇帖子属于一个分类。Laravel 用帖子的 category_id 匹配 categories 表的 id。

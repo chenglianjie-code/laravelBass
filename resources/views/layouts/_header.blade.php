@@ -40,6 +40,7 @@
           </li>
         </ul>
       @else
+        <a href="{{ route('topics.create') }}">新建帖子</a>
         <ul class="navbar-nav navbar-right">
           <li class="nav-item">
             <details class="nav-user dropdown">
@@ -54,6 +55,7 @@
                 <span class="nav-user-chevron" aria-hidden="true"></span>
               </summary>
 
+   
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{{ route('users.show', Auth::user()) }}">个人中心</a>
                 <a class="dropdown-item" href="{{ route('users.edit', Auth::id()) }}">编辑资料</a>
