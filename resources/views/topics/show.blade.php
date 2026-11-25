@@ -12,7 +12,27 @@
   <main class="topics-page topic-detail-page">
     <nav class="topics-heading" aria-label="帖子操作">
       <a class="topic-back" href="{{ route('topics.index') }}">← 返回帖子列表</a>
-      <a class="topic-button topic-button-secondary" href="{{ route('topics.edit', $topic->id) }}">编辑帖子</a>
+      @can('update', $topic)
+        <div class="topic-actions">
+          <a class="topic-button topic-button-secondary" href="{{ route('topics.edit', $topic->id) }}">
+            <span aria-hidden="true">✎</span>
+            编辑帖子
+          </a>
+          <form
+            class="topic-delete-form"
+            action="{{ route('topics.destroy', $topic->id) }}"
+            method="POST"
+            onsubmit="return confirm('您确定要删除吗？');"
+          >
+            @csrf
+            @method('DELETE')
+            <button class="topic-button topic-button-danger" type="submit">
+              <span aria-hidden="true">×</span>
+              删除
+            </button>
+          </form>
+        </div>
+      @endcan
     </nav>
 
     @if (session()->has('message'))

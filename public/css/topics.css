@@ -78,6 +78,31 @@
   background: #f4f9f6;
 }
 
+.topic-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.topic-delete-form {
+  display: flex;
+  margin: 0;
+}
+
+.topic-button-danger {
+  border-color: #e6c9c9;
+  color: #a84949;
+  background: #fff;
+}
+
+.topic-button-danger:hover {
+  border-color: #d69c9c;
+  color: #913737;
+  background: #fff4f4;
+}
+
 .topic-back {
   justify-self: start;
   color: #687c70;
